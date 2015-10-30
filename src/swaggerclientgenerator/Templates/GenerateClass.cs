@@ -18,9 +18,9 @@ namespace swaggerclientgenerator.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
+    #line 1 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\GenerateClass.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class BasicClientTemplate : BasicClientTemplateBase
+    public partial class GenerateClass : GenerateClassBase
     {
 #line hidden
         /// <summary>
@@ -29,135 +29,18 @@ namespace swaggerclientgenerator.Templates
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n");
-            this.Write("\r\n");
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Net;\r\nusing System" +
-                    ".Net.Http;\r\nusing System.Threading.Tasks;\r\nusing Newtonsoft.Json;\r\n\r\n");
             
-            #line 15 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
+            #line 7 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\GenerateClass.tt"
 
-	var className=model.ClassName;
-	var configFileName= className + "Config";
-	var @namespace = model.Namespace;
+PushIndent("    ");
 
+WriteLine(model.Render());
+
+ClearIndent();
 
             
             #line default
             #line hidden
-            this.Write("\r\nnamespace ");
-            
-            #line 22 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(@namespace));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n{\r\n    public class ");
-            
-            #line 24 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(className));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    {\r\n        private readonly ");
-            
-            #line 26 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(configFileName));
-            
-            #line default
-            #line hidden
-            this.Write(" config;\r\n        private readonly HttpClient client;\r\n\r\n        public ");
-            
-            #line 29 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(className));
-            
-            #line default
-            #line hidden
-            this.Write("(");
-            
-            #line 29 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(configFileName));
-            
-            #line default
-            #line hidden
-            this.Write(@" config)
-        {
-            this.config = config;
-            this.client = config.CreateClient();
-        }
-
-        public async Task<object> GetObject(object parameter)
-        {
-            var response = await client.GetAsync(string.Empty);
-
-            if (response.StatusCode == HttpStatusCode.NotFound)
-                return null;
-
-            response.EnsureSuccessStatusCode();
-
-            var result = JsonConvert.DeserializeObject<object>(await response.Content.ReadAsStringAsync());
-            return result;
-        }
-    }
-
-    public class ");
-            
-            #line 49 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(configFileName));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    {\r\n        public ");
-            
-            #line 51 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(configFileName));
-            
-            #line default
-            #line hidden
-            this.Write(@"(string endpoint,
-            Dictionary<string, string> defaultHeaders = null)
-        {
-            Endpoint = endpoint;
-            DefaultHeaders = defaultHeaders;
-        }
-
-        public string Endpoint { get; }
-        public Dictionary<string, string> DefaultHeaders { get; }
-
-        public HttpClient CreateClient()
-        {
-            var client = new HttpClient { BaseAddress = new Uri(Endpoint) };
-
-            foreach (var header in DefaultHeaders ?? new Dictionary<string, string>())
-                client.DefaultRequestHeaders.Add(header.Key, header.Value);
-
-			
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(""application/json""));
-
-            return client;
-        }
-    }
-");
-            
-            #line 74 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
- foreach(var definition in model.Definitions.Where(x=>x.ShouldGenerate)) { 	
-            
-            #line default
-            #line hidden
-            this.Write("\r\n");
-            
-            #line 76 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new GenerateClass(definition).TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\n");
-            
-            #line 78 "C:\src\swaggerclientdotnet\src\swaggerclientgenerator\Templates\BasicClientTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -169,7 +52,7 @@ namespace swaggerclientgenerator.Templates
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class BasicClientTemplateBase
+    public class GenerateClassBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

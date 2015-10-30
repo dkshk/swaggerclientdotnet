@@ -20,31 +20,4 @@ namespace swaggerclientgenerator.Schema
 
         public Dictionary<string,Definition> Definitions { get; set; } 
     }
-
-
-    public class Definition
-    {
-        public string type { get; set; }
-        public string[] required { get; set; }
-        public Dictionary<string, Property> Properties { get; set; }
-    }
-    
-    public class Property
-    {
-        public string format { get; set; }
-        public int maximum { get; set; }
-        public int minimum { get; set; }
-        public string type { get; set; }
-    }
-
-    public class Name
-    {
-        public string type { get; set; }
-    }
-
-    public class Tag
-    {
-        public string type { get; set; }
-    }
-
 }

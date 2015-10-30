@@ -47,6 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratorModels\ClassDefinition.cs" />
+    <Compile Include="GeneratorModels\SwaggerSchemaHelpers.cs" />
+    <Compile Include="Schema\Definition.cs" />
+    <Compile Include="Schema\FlattenedEndpoint.cs" />
+    <Compile Include="Schema\Name.cs" />
+    <Compile Include="Schema\Property.cs" />
+    <Compile Include="GeneratorModels\PropertyDefinition.cs" />
+    <Compile Include="Schema\Tag.cs" />
     <Compile Include="Templates\BasicClientTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -60,6 +68,12 @@
     <Compile Include="Schema\SwaggerSpecification.cs" />
     <Compile Include="Schema\SwaggerSpecificationInfo.cs" />
     <Compile Include="Templates\BasicClientTemplate.partial.cs" />
+    <Compile Include="Templates\GenerateClass.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\GenerateClass.partial.cs" />
     <Compile Include="Templates\SampleClient.cs" />
     <Compile Include="Templates\SwaggerTemplateModel.cs" />
   </ItemGroup>
@@ -78,11 +92,17 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>BasicClientTemplate.cs</LastGenOutput>
     </Content>
+    <Content Include="Templates\GenerateClass.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GenerateClass.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Schema\NewFolder1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

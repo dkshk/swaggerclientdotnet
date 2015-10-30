@@ -1,4 +1,6 @@
 ﻿<#@ template language="C#" #>
+
+<#@ include file="GenerateClass.tt" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
@@ -69,4 +71,10 @@ namespace <#=@namespace#>
             return client;
         }
     }
+<# foreach(var definition in model.Definitions.Where(x=>x.ShouldGenerate)) { 	#>
+
+<#=new GenerateClass(definition).TransformText()#>
+
+<# } #>
+
 }

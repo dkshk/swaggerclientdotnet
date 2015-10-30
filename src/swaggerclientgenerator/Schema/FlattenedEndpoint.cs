@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace swaggerclientgenerator.Schema
 {
-    public class Endpoint
+    public class FlattenedEndpoint
     {
+        public string Path { get; set; }
         public string[] Tags { get; set; }
         public string OperationId { get; set; }
         public object[] Consumes { get; set; }
