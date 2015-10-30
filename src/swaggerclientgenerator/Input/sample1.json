@@ -1,0 +1,439 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "csn.telephony.numbers.api"
+    },
+    "host": "numbers.stg.au:80",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/Healthcheck": {
+            "get": {
+                "tags": [
+                    "Healthcheck"
+                ],
+                "operationId": "Healthcheck_GetHeathcheck",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1/numbers/{number}": {
+            "get": {
+                "tags": [
+                    "Numbers"
+                ],
+                "operationId": "Numbers_GetNumber",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "number",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Numbers"
+                ],
+                "operationId": "Numbers_DeleteNumber",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "number",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1/numbers": {
+            "get": {
+                "tags": [
+                    "Numbers"
+                ],
+                "operationId": "Numbers_GetNumbers",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "provider",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "service",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Numbers"
+                ],
+                "operationId": "Numbers_PostNumber",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "createNumberModel",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateNumberModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1/provisions/service/{number}": {
+            "get": {
+                "tags": [
+                    "Provisions"
+                ],
+                "operationId": "Provisions_GetService",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "number",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1/provisions/count": {
+            "get": {
+                "tags": [
+                    "Provisions"
+                ],
+                "operationId": "Provisions_GetAvailableCount",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "specification.postcode",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32",
+                        "maximum": 9999,
+                        "minimum": 100
+                    },
+                    {
+                        "name": "specification.maxLastUsedUTC",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "specification.provider",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1/provisions/healthcheck": {
+            "get": {
+                "tags": [
+                    "Provisions"
+                ],
+                "operationId": "Provisions_GetCheckCount",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "minCount",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "specification.postcode",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32",
+                        "maximum": 9999,
+                        "minimum": 100
+                    },
+                    {
+                        "name": "specification.maxLastUsedUTC",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "specification.provider",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1/provisions": {
+            "post": {
+                "tags": [
+                    "Provisions"
+                ],
+                "operationId": "Provisions_PostProvision",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "service",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "specification.postcode",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32",
+                        "maximum": 9999,
+                        "minimum": 100
+                    },
+                    {
+                        "name": "specification.maxLastUsedUTC",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "specification.provider",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1/provisions/{number}": {
+            "delete": {
+                "tags": [
+                    "Provisions"
+                ],
+                "operationId": "Provisions_DeleteProvision",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "number",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Object": {
+            "type": "object",
+            "properties": {}
+        },
+        "CreateNumberModel": {
+            "required": [
+                "Number",
+                "Provider"
+            ],
+            "type": "object",
+            "properties": {
+                "Number": {
+                    "pattern": "^0[2-9]\\d{8}$",
+                    "type": "string"
+                },
+                "Provider": {
+                    "type": "string"
+                }
+            }
+        },
+        "ProvisionSpecification": {
+            "required": [
+                "Postcode"
+            ],
+            "type": "object",
+            "properties": {
+                "Postcode": {
+                    "format": "int32",
+                    "maximum": 9999,
+                    "minimum": 100,
+                    "type": "integer"
+                },
+                "MaxLastUsedUTC": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "Provider": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
